@@ -388,7 +388,7 @@ class Ism8(asyncio.Protocol):
             return
 
         if dp_type not in _DECODERS:
-            self.log.info(f"datatype {dp_type} not implemented, fallback to INT.")
+            self.log.debug(f"datatype {dp_type} not implemented, fallback to INT.")
         decoder = _DECODERS.get(dp_type, decode_int)
 
         value = decoder(int.from_bytes(raw_bytes, byteorder="big"))
